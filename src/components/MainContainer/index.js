@@ -1,4 +1,4 @@
-import {Component} from 'react-dom'
+import {Component} from 'react'
 import {v4 as uuidv4} from 'uuid'
 import EachPasswordItem from '../EachPasswordItem'
 import './index.css'
