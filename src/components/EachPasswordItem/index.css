@@ -4,44 +4,65 @@
   display: flex;
   width: 100%;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  border-radius: 3px;
+  padding: 5px;
+  margin-bottom: 15px;
 }
 .profile-cont {
   background-color: #c3caea;
   font-size: 10px;
-  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
 }
 .details-cont {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 5px;
+  width: 70%;
 }
 .website {
-  font-size: 10px;
+  font-size: 15px;
   color: #ffffff;
 }
 .username {
-  font-size: 10px;
+  font-size: 15px;
   color: #ffffff;
 }
 .password {
   font-size: 10px;
   color: #ffffff;
 }
+.stars {
+  width: 100%;
+}
 .delete-button {
   width: 15px;
   height: 15px;
-  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 .delete-icon {
-  width: 15px;
-  height: 15px;
+  width: 30px;
+  height: 30px;
 }
 
 @media screen and (min-width: 768px) {
   .list {
-    width: 25%;
+    width: 30%;
+    margin-right: 15px;
   }
 }

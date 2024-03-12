@@ -12,7 +12,7 @@ const EachPasswordItem = props => {
       <div className="profile-cont">
         <p className="pro">{username[0]}</p>
       </div>
-      <div className="detail-cont">
+      <div className="details-cont">
         <h1 className="website">{website}</h1>
         <p className="username">{username}</p>
         {checkBoxStatus ? (

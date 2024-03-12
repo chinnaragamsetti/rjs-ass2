@@ -64,12 +64,11 @@ class MainContainer extends Component {
     this.setState(prevState => ({checkBoxStatus: !prevState.checkBoxStatus}))
   }
 
-  renderPasswordList = () => {
-    const {checkBoxStatus, PasswordList} = this.state
-
+  renderPasswordList = searchResults => {
+    const {checkBoxStatus} = this.state
     return (
       <ul className="password-list-cont">
-        {PasswordList.map(each => (
+        {searchResults.map(each => (
           <EachPasswordItem
             details={each}
             key={each.id}
@@ -82,11 +81,14 @@ class MainContainer extends Component {
   }
 
   renderNoPasswordList = () => (
-    <img
-      src="https://assets.ccbp.in/frontend/react-js/no-passwords-img.png"
-      alt="no passwords"
-      className="no-password"
-    />
+    <div className="no-password-cont">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/no-passwords-img.png"
+        alt="no passwords"
+        className="no-password"
+      />
+      <p className="no-pass">No Passwords</p>
+    </div>
   )
 
   render() {
@@ -98,10 +100,11 @@ class MainContainer extends Component {
       searchInput,
       PasswordList,
     } = this.state
+
     const searchResults = PasswordList.filter(each =>
       each.website.includes(searchInput),
     )
-    const searchresultslength = searchResults.length()
+    const searchresultslength = searchResults.length
     return (
       <div className="sub-containers">
         <div className="top-container">
@@ -115,6 +118,7 @@ class MainContainer extends Component {
               />
               <input
                 type="text"
+                className="input"
                 value={website}
                 onChange={this.onChangeWebsite}
                 placeholder="Enter Website"
@@ -128,6 +132,7 @@ class MainContainer extends Component {
               />
               <input
                 type="text"
+                className="input"
                 value={username}
                 placeholder="Enter Username"
                 onChange={this.onChangeUsername}
@@ -142,19 +147,26 @@ class MainContainer extends Component {
               <input
                 type="text"
                 value={password}
+                className="input"
                 placeholder="Enter Password"
                 onChange={this.onChangePassword}
               />
-              <button
-                className="add-button"
-                type="button"
-                onClick={this.onClickAdd}
-              >
-                Add
-              </button>
             </div>
+            <button
+              className="add-button"
+              type="button"
+              onClick={this.onClickAdd}
+            >
+              Add
+            </button>
           </div>
-          <div className="password-manager" />
+          <div className="password-manager-cont">
+            <img
+              className="password-manager"
+              src="https://assets.ccbp.in/frontend/react-js/password-manager-lg-img.png"
+              alt="password manager"
+            />
+          </div>
         </div>
         <div className="bottom-container">
           <div className="bottom-head-cont">
@@ -167,7 +179,12 @@ class MainContainer extends Component {
                 alt="search"
                 className="search-icon"
               />
-              <input type="search" onChange={this.onChangeSearch} />
+              <input
+                type="search"
+                placeholder="Search"
+                className="search-input"
+                onChange={this.onChangeSearch}
+              />
             </div>
           </div>
           <hr className="hr-line" />
@@ -182,7 +199,7 @@ class MainContainer extends Component {
             </label>
           </div>
           {searchresultslength > 0
-            ? this.renderPasswordList()
+            ? this.renderPasswordList(searchResults)
             : this.renderNoPasswordList()}
         </div>
       </div>

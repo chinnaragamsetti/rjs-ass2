@@ -7,17 +7,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 10px;
+  padding: 20px;
   background-color: #5763a5;
   border-radius: 3px;
+  margin-bottom: 10px;
 }
 
 .entry-container {
-  order: 1;
+  order: 2;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+
   padding: 10px;
   background-color: #454f84;
   border-radius: 5px;
@@ -30,31 +30,60 @@
 .input-container {
   display: flex;
   flex-direction: row;
-  border-radius: 1px;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 3px;
+  background-color: #ffffff;
+  padding: 5px;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 20px;
+}
+.input {
+  height: 30px;
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 10px;
 }
 
 .input-logo {
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
 }
+
 .add-button {
   background-color: #0b69ff;
   color: azure;
   display: flex;
-  font-size: 15px;
+  border: none;
+  font-size: 10px;
+  padding: 5px;
+  border-radius: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
   align-self: flex-end;
+  cursor: pointer;
 }
 
-.password-manager {
-  order: 0;
+.password-manager-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  background-image: url('https://assets.ccbp.in/frontend/react-js/password-manager-sm-img.png');
+  order: 1;
+}
+.password-manager {
+  width: 100%;
 }
 .bottom-container {
   display: flex;
   flex-direction: column;
-  padding: 10px;
   width: 100%;
+  padding: 20px;
+  background-color: #5763a5;
+  border-radius: 3px;
 }
 .bottom-head-cont {
   display: flex;
@@ -62,24 +91,38 @@
   justify-content: space-between;
 }
 .bottom-main-head {
-  font-size: 20px;
+  font-size: 10px;
   color: #ffffff;
 }
 
 .span {
   font-size: 10px;
-  border: 1px solid #5763a5;
+  border: 1px solid white;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
   padding: 3px;
   color: #ffffff;
 }
 .search-cont {
   display: flex;
   flex-direction: row;
-  width: 200px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
 }
+.search-input {
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  color: #454f84;
+}
+
 .search-icon {
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  border-right: 1px solid #454f84;
 }
 .hr-line {
   width: 100%;
@@ -87,18 +130,35 @@
 .password-checkbox-cont {
   display: flex;
   flex-direction: row;
+  align-self: flex-end;
+  margin-bottom: 10px;
 }
-.checkbox-label {
-  font-size: 20px;
+.checkBox-label {
+  font-size: 10px;
   color: #ffffff;
+  cursor: pointer;
 }
 .password-list-cont {
   list-style-type: none;
   width: 100%;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.no-password-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .no-password {
-  width: 40%;
+  width: 100%;
   height: 300px;
+}
+.no-pass {
+  font-size: 20px;
+  color: #ffffff;
 }
 
 @media screen and (min-width: 768px) {
@@ -107,14 +167,19 @@
     flex-direction: row;
   }
   .entry-container {
-    order: 0;
-    width: 50%;
-  }
-  .password-manager {
     order: 1;
     width: 50%;
-    height: 400px;
-    background-image: url('https://assets.ccbp.in/frontend/react-js/password-manager-lg-img.png');
+  }
+  .password-manager-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    order: 2;
+  }
+  .password-manager {
+    width: 100%;
   }
   .no-password {
     width: 100%;
