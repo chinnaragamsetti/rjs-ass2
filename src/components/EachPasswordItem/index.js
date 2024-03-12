@@ -1,7 +1,7 @@
 import './index.css'
 
 const EachPasswordItem = props => {
-  const {details} = props
+  const {details, checkBoxStatus} = props
   const {id, username, password, website, onDeleteItem} = details
   const onDeleteList = () => {
     onDeleteItem(id)
@@ -15,7 +15,15 @@ const EachPasswordItem = props => {
       <div className="detail-cont">
         <h1 className="website">{website}</h1>
         <p className="username">{username}</p>
-        <p className="password">{password}</p>
+        {checkBoxStatus ? (
+          <p className="password">{password}</p>
+        ) : (
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/password-manager-stars-img.png"
+            alt="stars"
+            className="stars"
+          />
+        )}
       </div>
       <button type="button" className="delete-button" onClick={onDeleteList}>
         <img

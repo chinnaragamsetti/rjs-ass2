@@ -8,8 +8,7 @@ class MainContainer extends Component {
     website: '',
     username: '',
     password: '',
-    withPasswordList: [],
-    withOutPasswordList: [],
+    PasswordList: [],
     searchInput: '',
     checkBoxStatus: false,
     count: 0,
@@ -29,14 +28,8 @@ class MainContainer extends Component {
 
   onClickAdd = () => {
     const {website, username, password} = this.state
+
     const newWithPass = {
-      id: uuidv4(),
-      website,
-      username,
-      password:
-        'https://assets.ccbp.in/frontend/react-js/password-manager-stars-img.png',
-    }
-    const newWithOutPass = {
       id: uuidv4(),
       website,
       username,
@@ -47,38 +40,23 @@ class MainContainer extends Component {
       username: '',
       password: '',
       count: prevState.count + 1,
-      withPassWordList: [...prevState.withPassWordList, newWithPass],
-      withOutPasswordList: [...prevState.withOutPasswordList, newWithOutPass],
+      PasswordList: [...prevState.PasswordList, newWithPass],
     }))
   }
 
   onChangeSearch = event => {
-    const {withOutPasswordList, withPassWordList, searchInput} = this.state
-    const afterSearchListWith = withPassWordList.filter(each =>
-      each.website.includes(event.target.value),
-    )
-
-    const afterSearchListWithOut = withOutPasswordList.filter(each =>
-      each.website.includes(event.target.value),
-    )
-
     this.setState({
       searchInput: event.target.value,
-      withOutPassWordList: afterSearchListWithOut,
-      withPassWordList: afterSearchListWith,
     })
   }
 
   onDeleteItem = id => {
-    const {withPassWordList, withOutPasswordList} = this.state
-    const afterDeleteWithList = withPassWordList.filter(each => each.id !== id)
-    const afterDeleteWithOutList = withOutPassWordList.filter(
-      each => each.id !== id,
-    )
+    const {PasswordList} = this.state
+    const afterDeleteWithList = PasswordList.filter(each => each.id !== id)
+
     this.setState(prevState => ({
       count: prevState.count - 1,
-      withPasswordList: afterDeleteWithList,
-      withOutPasswordList: afterDeleteWithOutList,
+      PasswordList: afterDeleteWithList,
     }))
   }
 
@@ -87,19 +65,18 @@ class MainContainer extends Component {
   }
 
   renderPasswordList = () => {
-    const {checkBoxStatus, withOutPasswordList, withPasswordList} = this.state
+    const {checkBoxStatus, PasswordList} = this.state
 
     return (
       <ul className="password-list-cont">
-        {checkBoxStatus
-          ? withOutPasswordList
-          : withPasswordList.map(each => (
-              <EachPasswordItem
-                details={each}
-                key={each.id}
-                onDeleteItem={this.onDeleteItem}
-              />
-            ))}
+        {PasswordList.map(each => (
+          <EachPasswordItem
+            details={each}
+            key={each.id}
+            onDeleteItem={this.onDeleteItem}
+            checkBoxStatus={checkBoxStatus}
+          />
+        ))}
       </ul>
     )
   }
@@ -117,11 +94,14 @@ class MainContainer extends Component {
       website,
       username,
       password,
-      withPasswordList,
-      withOutPasswordList,
-      checkBoxStatus,
       count,
+      searchInput,
+      PasswordList,
     } = this.state
+    const searchResults = PasswordList.filter(each =>
+      each.website.includes(searchInput),
+    )
+    const searchresultslength = searchResults.length()
     return (
       <div className="sub-containers">
         <div className="top-container">
@@ -197,9 +177,13 @@ class MainContainer extends Component {
               id="checkboxId"
               onClick={this.onClickCheckBox}
             />
-            <label htmlFor="checkboxId">Show Passwords</label>
+            <label htmlFor="checkboxId" className="checkBox-label">
+              Show Passwords
+            </label>
           </div>
-          {count > 0 ? this.renderPasswordList() : this.renderNoPasswordList()}
+          {searchresultslength > 0
+            ? this.renderPasswordList()
+            : this.renderNoPasswordList()}
         </div>
       </div>
     )
