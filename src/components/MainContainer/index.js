@@ -92,14 +92,7 @@ class MainContainer extends Component {
   )
 
   render() {
-    const {
-      website,
-      username,
-      password,
-      count,
-      searchInput,
-      PasswordList,
-    } = this.state
+    const {website, username, password, searchInput, PasswordList} = this.state
 
     const searchResults = PasswordList.filter(each =>
       each.website.includes(searchInput),
@@ -108,7 +101,7 @@ class MainContainer extends Component {
     return (
       <div className="sub-containers">
         <div className="top-container">
-          <div className="entry-container">
+          <form className="entry-container" onSubmit={this.onClickAdd}>
             <h1 className="entry-cont-head">Add New Password</h1>
             <div className="input-container">
               <img
@@ -116,6 +109,7 @@ class MainContainer extends Component {
                 className="input-logo"
                 alt="website"
               />
+              <hr className="top-hrline" />
               <input
                 type="text"
                 className="input"
@@ -130,6 +124,8 @@ class MainContainer extends Component {
                 className="input-logo"
                 alt="username"
               />
+              <hr className="top-hrline" />
+
               <input
                 type="text"
                 className="input"
@@ -144,22 +140,20 @@ class MainContainer extends Component {
                 className="input-logo"
                 alt="password"
               />
+              <hr className="top-hrline" />
+
               <input
-                type="text"
+                type="password"
                 value={password}
                 className="input"
                 placeholder="Enter Password"
                 onChange={this.onChangePassword}
               />
             </div>
-            <button
-              className="add-button"
-              type="button"
-              onClick={this.onClickAdd}
-            >
+            <button className="add-button" type="submit" data-testid="delete">
               Add
             </button>
-          </div>
+          </form>
           <div className="password-manager-cont">
             <img
               className="password-manager"
@@ -171,14 +165,17 @@ class MainContainer extends Component {
         <div className="bottom-container">
           <div className="bottom-head-cont">
             <h1 className="bottom-main-head">
-              Your Password <span className="span">{count}</span>
+              Your Passwords<p className="span">{searchresultslength}</p>
             </h1>
             <div className="search-cont">
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/password-manager-search-img.png"
-                alt="search"
-                className="search-icon"
-              />
+              <div className="search-icon-cont">
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/password-manager-search-img.png"
+                  alt="search"
+                  className="search-icon"
+                />
+              </div>
+
               <input
                 type="search"
                 placeholder="Search"

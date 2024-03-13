@@ -1,8 +1,8 @@
 import './index.css'
 
 const EachPasswordItem = props => {
-  const {details, checkBoxStatus} = props
-  const {id, username, password, website, onDeleteItem} = details
+  const {details, checkBoxStatus, onDeleteItem} = props
+  const {id, username, password, website} = details
   const onDeleteList = () => {
     onDeleteItem(id)
   }
