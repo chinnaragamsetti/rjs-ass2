@@ -93,12 +93,23 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.password-list-count-cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 .bottom-main-head {
   font-size: 10px;
   color: #ffffff;
+  margin-right: 10px;
 }
 
 .span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-size: 10px;
   border: 1px solid white;
   height: 15px;

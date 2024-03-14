@@ -26,7 +26,8 @@ class MainContainer extends Component {
     this.setState({password: event.target.value})
   }
 
-  onClickAdd = () => {
+  onClickAdd = event => {
+    event.preventDefault()
     const {website, username, password} = this.state
 
     const newWithPass = {
@@ -164,9 +165,11 @@ class MainContainer extends Component {
         </div>
         <div className="bottom-container">
           <div className="bottom-head-cont">
-            <h1 className="bottom-main-head">
-              Your Passwords<p className="span">{searchresultslength}</p>
-            </h1>
+            <div className="password-list-count-cont">
+              <h1 className="bottom-main-head">Your Passwords</h1>
+              <p className="span">{searchresultslength}</p>
+            </div>
+
             <div className="search-cont">
               <div className="search-icon-cont">
                 <img
