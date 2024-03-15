@@ -30,6 +30,7 @@ const EachPasswordItem = props => {
           src="https://assets.ccbp.in/frontend/react-js/password-manager-delete-img.png"
           alt="delete"
           className="delete-icon"
+          data-testid="delete"
         />
       </button>
     </li>

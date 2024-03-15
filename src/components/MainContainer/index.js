@@ -151,7 +151,7 @@ class MainContainer extends Component {
                 onChange={this.onChangePassword}
               />
             </div>
-            <button className="add-button" type="submit" data-testid="delete">
+            <button className="add-button" type="submit">
               Add
             </button>
           </form>
