@@ -13,7 +13,7 @@ const EachPasswordItem = props => {
         <p className="pro">{username[0]}</p>
       </div>
       <div className="details-cont">
-        <h1 className="website">{website}</h1>
+        <p className="website">{website}</p>
         <p className="username">{username}</p>
         {checkBoxStatus ? (
           <p className="password">{password}</p>
@@ -25,12 +25,16 @@ const EachPasswordItem = props => {
           />
         )}
       </div>
-      <button type="button" className="delete-button" onClick={onDeleteList}>
+      <button
+        type="button"
+        data-testid="delete"
+        className="delete-button"
+        onClick={onDeleteList}
+      >
         <img
           src="https://assets.ccbp.in/frontend/react-js/password-manager-delete-img.png"
           alt="delete"
           className="delete-icon"
-          data-testid="delete"
         />
       </button>
     </li>

@@ -96,7 +96,7 @@ class MainContainer extends Component {
     const {website, username, password, searchInput, PasswordList} = this.state
 
     const searchResults = PasswordList.filter(each =>
-      each.website.includes(searchInput),
+      each.website.toLowerCase().includes(searchInput.toLowerCase()),
     )
     const searchresultslength = searchResults.length
     return (
